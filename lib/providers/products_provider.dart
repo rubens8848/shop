@@ -6,7 +6,7 @@ class ProductsProvider with ChangeNotifier {
   List<Product> _items = DUMMY_PRODUCTS;
 
   List<Product> get getItems => [..._items];
-  
+
   List<Product> get getFavoriteItems => _items.where((prod) => prod.isFavorite).toList();
   
   void addProduct(Product product) {
