@@ -12,7 +12,7 @@ class CartItem {
 
   CartItem({
     @required this.id,
-    @required this.productId ,
+    @required this.productId,
     @required this.title,
     @required this.quantity,
     @required this.price,
@@ -33,7 +33,7 @@ class Cart with ChangeNotifier {
   double get getTotalAmout {
     double total = 0.0;
     _items.forEach((key, cartItem) {
-        total += cartItem.price * cartItem.quantity;
+      total += cartItem.price * cartItem.quantity;
     });
     return total;
   }
@@ -65,12 +65,34 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
-  void removeItem(String productId){
+
+  void removeSingleItem(productId) {
+    if (!_items.containsKey(productId)) {
+      return;
+    }
+
+    if(_items[productId].quantity == 1){
+       _items.remove(productId);
+    }else{
+     _items.update(productId, (existingItem) {
+        return CartItem(
+          id: existingItem.id,
+          productId: productId,
+          price: existingItem.price,
+          title: existingItem.title,
+          quantity: existingItem.quantity - 1,
+        );
+      });
+    }
+    notifyListeners();
+  }
+
+  void removeItem(String productId) {
     _items.remove(productId);
     notifyListeners();
   }
 
-  void clear(){
+  void clear() {
     _items = {};
 
     notifyListeners();
