@@ -5,8 +5,10 @@ import 'package:shop/providers/orders.dart';
 import 'package:shop/providers/products_provider.dart';
 import 'package:shop/views/cart_screen.dart';
 import 'package:shop/views/order_screen.dart';
+import 'package:shop/views/product_form_screen.dart';
 
 import 'package:shop/views/products_overview_screen.dart';
+import 'package:shop/views/products_screen.dart';
 import './utils/app_routes.dart';
 import 'package:shop/views/product_detail_screen.dart';
 
@@ -51,6 +53,8 @@ class MyHomePage extends StatelessWidget {
           AppRoutes.PRODUCT_DETAIL: (ctx) => ProductDetailScreen(),
           AppRoutes.CART: (ctx) => CartScreen(),
           AppRoutes.ORDERS: (ctx) => OrdersScreen(),
+          AppRoutes.PRODUCTS: (ctx) => ProductsScreen(),
+          AppRoutes.PRODUCTS_FORM: (ctx) => ProductFormScreen(),
         },
       ),
     );
